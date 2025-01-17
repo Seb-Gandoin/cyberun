@@ -1,0 +1,111 @@
+{
+    "type": "Categorization",
+    "elements": [
+        {
+            "type": "Category",
+            "label": "User Information",
+            "elements": [
+                {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/username"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/email"
+                        }
+                    ]
+                },
+                {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/userId"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/createdAt"
+                        }
+                    ]
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/acceptTerms"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/newsletterSubscribed"
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "i18n": "Account Settings",
+            "elements": [
+                {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/preferences/properties/theme"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/preferences/properties/notifications/email"
+                        }
+                    ]
+                },
+                {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/preferences/properties/notifications/sms"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/preferences/properties/notifications/push"
+                        }
+                    ]
+                }
+            ],
+            "rule": {
+                "effect": "SHOW",
+                "condition": {
+                    "scope": "#/properties/acceptTerms",
+                    "schema": {
+                        "const": true
+                    }
+                }
+            }
+        },
+        {
+            "type": "Category",
+            "label": "Roles & Permissions",
+            "elements": [
+                {
+                    "type": "Control",
+                    "scope": "#/properties/roles"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/permissions/customAccess",
+                    "rule": {
+                        "effect": "SHOW",
+                        "condition": {
+                            "scope": "#/properties/roles",
+                            "schema": {
+                                "contains": {
+                                    "const": "admin"
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

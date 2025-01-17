@@ -1,0 +1,61 @@
+{
+    "type": "object",
+    "properties": {
+        "userId": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Unique identifier for the user"
+        },
+        "username": {
+            "type": "string",
+            "minLength": 3,
+            "description": "User's chosen display name"
+        },
+        "email": {
+            "type": "string",
+            "format": "email",
+            "description": "User's email address"
+        },
+        "preferences": {
+            "type": "object",
+            "properties": {
+                "newsletterSubscribed": {
+                    "type": "boolean",
+                    "description": "Indicates if the user is subscribed to the newsletter"
+                },
+                "theme": {
+                    "type": "string",
+                    "enum": ["light", "dark", "system"],
+                    "description": "Preferred UI theme"
+                },
+                "notifications": {
+                    "type": "object",
+                    "properties": {
+                        "email": {
+                            "type": "boolean"
+                        },
+                        "sms": {
+                            "type": "boolean"
+                        },
+                        "push": {
+                            "type": "boolean"
+                        }
+                    }
+                }
+            }
+        },
+        "roles": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "enum": ["admin", "editor", "viewer"]
+            },
+            "description": "List of roles assigned to the user"
+        },
+        "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp of account creation"
+        }
+    }
+}
