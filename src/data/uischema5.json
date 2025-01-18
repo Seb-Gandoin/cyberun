@@ -1,0 +1,48 @@
+{
+    "type": "Categorization",
+    "elements": [
+      {
+        "type": "Category",
+        "label": "Informations Produit",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/productId"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/productName"
+          }
+        ]
+      },
+      {
+        "type": "Category",
+        "label": "Détails du Produit",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/category"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/price"
+          }
+        ]
+      },
+      {
+        "type": "Category",
+        "label": "Stock & Disponibilité",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/stock"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/releaseDate"
+          }
+        ]
+      }
+    ]
+  }
+  

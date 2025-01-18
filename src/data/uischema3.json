@@ -1,0 +1,48 @@
+{
+    "type": "Categorization",
+    "elements": [
+      {
+        "type": "Category",
+        "label": "Informations Commande",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/orderId"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/customerName"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/email"
+          }
+        ]
+      },
+      {
+        "type": "Category",
+        "label": "Détails de la Commande",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/orderDetails/properties/totalAmount"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/orderDetails/properties/paymentStatus"
+          }
+        ]
+      },
+      {
+        "type": "Category",
+        "label": "Livraison",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/deliveryDate"
+          }
+        ]
+      }
+    ]
+  }
+  

@@ -1,0 +1,30 @@
+{
+    "type": "object",
+    "properties": {
+      "reservationId": {
+        "type": "integer",
+        "minimum": 1,
+        "description": "Unique identifier for the reservation"
+      },
+      "guestName": {
+        "type": "string",
+        "minLength": 3,
+        "description": "Name of the person making the reservation"
+      },
+      "guestCount": {
+        "type": "integer",
+        "minimum": 1,
+        "description": "Number of guests"
+      },
+      "reservationDate": {
+        "type": "string",
+        "format": "date-time",
+        "description": "Date and time of the reservation"
+      },
+      "specialRequests": {
+        "type": "string",
+        "description": "Additional requests for the reservation"
+      }
+    }
+  }
+  

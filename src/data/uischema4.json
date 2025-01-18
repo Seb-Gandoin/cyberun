@@ -1,0 +1,44 @@
+{
+    "type": "Categorization",
+    "elements": [
+      {
+        "type": "Category",
+        "label": "Informations Réservation",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/reservationId"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/guestName"
+          }
+        ]
+      },
+      {
+        "type": "Category",
+        "label": "Détails",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/guestCount"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/reservationDate"
+          }
+        ]
+      },
+      {
+        "type": "Category",
+        "label": "Demandes Spéciales",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/specialRequests"
+          }
+        ]
+      }
+    ]
+  }
+  

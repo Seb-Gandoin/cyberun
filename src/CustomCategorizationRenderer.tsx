@@ -1,13 +1,12 @@
+import React, { useState } from "react";
+import { Layout, Drawer, Menu, Button } from "antd";
+import { JsonFormsDispatch, JsonFormsLayoutProps, withJsonFormsLayoutProps } from "@jsonforms/react";
 
-import { Layout, Tabs } from 'antd';
-import { JsonFormsDispatch, JsonFormsLayoutProps, withJsonFormsLayoutProps } from '@jsonforms/react';
+const { Content } = Layout;
 
-const { TabPane } = Tabs;
-
-// Définir les types pour les catégories dans uischema
 interface Category {
   label: string;
-  elements: Array<any>; // Les éléments peuvent être des sous-uischema ou des contrôles
+  elements: Array<any>;
 }
 
 interface CustomCategorizationRendererProps extends JsonFormsLayoutProps {
@@ -23,31 +22,47 @@ const CustomCategorizationRenderer: React.FC<CustomCategorizationRendererProps> 
   path,
   renderers,
 }) => {
-  const categorization = uischema; // Extraction des catégories depuis uischema
-  const categories = categorization.elements || [];
+  const categories = uischema.elements || [];
+  const [menuDrawerVisible, setMenuDrawerVisible] = useState(false);
+  const [formDrawerVisible, setFormDrawerVisible] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
+
+  const handleMenuClick = (category: Category) => {
+    setSelectedCategory(category);
+    setFormDrawerVisible(true);
+  };
 
   return (
     <Layout>
-      <Tabs>
-        {categories.map((category, index) => (
-          <TabPane tab={category.label} key={index}>
-            {category.elements.map((control, i) => (
-              <div key={i} style={{ marginBottom: '16px' }}>
-                {/* JsonFormsDispatch s'occupe de rendre les champs selon leur définition */}
-                <JsonFormsDispatch
-                  uischema={control}
-                  schema={schema}
-                  path={path}
-                  renderers={renderers}
-                />
-              </div>
-            ))}
-          </TabPane>
+      <Button type="primary" onClick={() => setMenuDrawerVisible(true)} style={{ margin: "16px" }}>
+        Ouvrir le menu
+      </Button>
+
+      <Drawer title="Catégories" placement="left" onClose={() => setMenuDrawerVisible(false)} open={menuDrawerVisible}>
+        <Menu mode="vertical">
+          {categories.map((category, index) => (
+            <Menu.Item key={index} onClick={() => handleMenuClick(category)}>
+              {category.label}
+            </Menu.Item>
+          ))}
+        </Menu>
+      </Drawer>
+
+      <Drawer
+        title={selectedCategory?.label}
+        placement="right"
+        width={600}
+        onClose={() => setFormDrawerVisible(false)}
+        open={formDrawerVisible}
+      >
+        {selectedCategory && selectedCategory.elements.map((control, i) => (
+          <div key={i} style={{ marginBottom: "16px" }}>
+            <JsonFormsDispatch uischema={control} schema={schema} path={path} renderers={renderers} />
+          </div>
         ))}
-      </Tabs>
+      </Drawer>
     </Layout>
   );
 };
 
-// Exporter le composant avec le HOC `withJsonFormsLayoutProps`
 export default withJsonFormsLayoutProps(CustomCategorizationRenderer);

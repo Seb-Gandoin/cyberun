@@ -1,0 +1,36 @@
+{
+    "type": "object",
+    "properties": {
+      "productId": {
+        "type": "integer",
+        "minimum": 1,
+        "description": "Unique identifier for the product"
+      },
+      "productName": {
+        "type": "string",
+        "minLength": 3,
+        "description": "Name of the product"
+      },
+      "category": {
+        "type": "string",
+        "enum": ["electronics", "clothing", "home", "books"],
+        "description": "Category of the product"
+      },
+      "price": {
+        "type": "number",
+        "minimum": 0,
+        "description": "Price of the product"
+      },
+      "stock": {
+        "type": "integer",
+        "minimum": 0,
+        "description": "Number of items available in stock"
+      },
+      "releaseDate": {
+        "type": "string",
+        "format": "date",
+        "description": "Date when the product was released"
+      }
+    }
+  }
+  
